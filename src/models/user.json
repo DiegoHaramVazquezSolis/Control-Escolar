@@ -1,0 +1,49 @@
+{
+    "Suid":{
+        //student
+        "CP": "number",
+        "CURP": "string",
+        "apellidoM": "string",
+        "apellidoP": "string",
+        "nacimiento": "date",
+        "colonia": "string",
+        "cruce1": "string",
+        "cruce2": "string",
+        "email": "email",
+        "contactoDeEmergencia": "string",
+        "telefonoDeEmergencia": "number",
+        "grado": "string",
+        "grupo": "string",
+        "altura": "string",
+        "municipio": "string",
+        "nacionalidad": "string",
+        "nombre": "string",
+        "noExt": "string",
+        "noInt": "string",
+        "telefono": "string",
+        "calle": "string",
+        "tipoDeSangre": "string",
+        "uid": "string",
+        "peso": "number",
+        "type": "string" //student
+    },
+    "Tuid":{
+        //teacher
+        "nombre":"string",
+        "apellidoM":"string",
+        "apellidoP":"string",
+        "email":"email",
+        "grado":"string",
+        "grupo":"string",
+        "uid":"string",
+        "type":"string"//teacher
+    },
+    "Auid":{
+        "nombre":"string",
+        "apellidoM":"string",
+        "apellidoP":"string",
+        "email":"email",
+        "uid":"string",
+        "type":"string"//admin
+    }
+}

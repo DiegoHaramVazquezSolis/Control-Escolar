@@ -1,0 +1,11 @@
+{
+    "course(year)":{
+        "Materia":{
+            "cal1": "number",
+            "cal2": "number",
+            "cal3": "number",
+            "cal4": "number",
+            "cal5": "number"
+        }
+    }
+}

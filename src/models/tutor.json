@@ -1,0 +1,22 @@
+{
+    "uid":{
+        //"string (padre o madre)"
+        "type":{
+            "CP": "string",
+            "colonia": "string",
+            "email": "email",
+            "escolaridad": "string",
+            "municipio": "string",
+            "nombre": "string",
+            "noExt": "string",
+            "noInt": "string",
+            "telefono": "string",
+            "estado": "string",
+            "calle": "string",
+            "trabajo": "string",
+            "telefonoTrabajo": "string",
+            "apellidoM": "string",
+            "apellidoP": "string"
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "uid":{
+        "abril": "bool",
+        "diciembre": "bool",
+        "febrero": "bool",
+        "enero": "bool",
+        "junio": "bool",
+        "marzo": "bool",
+        "mayo": "bool",
+        "noviembre": "bool",
+        "octubre": "bool",
+        "septiembre": "bool"
+    }
+}
