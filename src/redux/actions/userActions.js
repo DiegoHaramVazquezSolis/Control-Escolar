@@ -33,9 +33,21 @@ function getProfile(user, dispatch) {
  * @param {Personal data of user} info 
  * @param {Dispatch} dispatch 
  */
-function createProfile(user, info, dispatch) {
+function createProfile(user, type, motherEscolaridad, motherWorkPhone, motherWork, motherPhone, motherEmail, motherMunicipio, motherState, motherCP, motherColonia, motherapellidoP, motherapellidoM, motherName, motherStreet, motherNoExt, motherNoInt, fatherEscolaridad, fatherWorkPhone, fatherWork, fatherPhone, fatherEmail, fatherMunicipio, fatherState, fatherCP,  fatherColonia, fatherapellidoP, fatherapellidoM, fatherName, name, apellidoP, apellidoM, CURP, tipoDeSangre, birthday, weight, street, fatherStreet, fatherNoExt, fatherNoInt, noExt, noInt, cruce1, cruce2, colonia, CP, municipio, emergencyPhone, emergencyContact, phone, height, nacionalidad, grade, persona1, persona2, persona3, parentesco1, parentesco2, parentesco3, email, password, dispatch) {
     const userRef = db.child("users").child(user.uid);
-    const profile = info;
+    const profile = {
+        motherEscolaridad, motherWorkPhone, motherWork, motherPhone, motherEmail,
+        motherMunicipio, motherState, motherCP, motherColonia, motherapellidoP,
+        motherapellidoM, motherName, motherStreet, motherNoExt, motherNoInt,
+        fatherEscolaridad, fatherWorkPhone, fatherWork, fatherPhone, fatherEmail, 
+        fatherMunicipio, fatherState, fatherCP,  fatherColonia, fatherapellidoP, 
+        fatherapellidoM, fatherName, name, apellidoP, apellidoM, CURP, 
+        tipoDeSangre, birthday, weight, street, fatherStreet, fatherNoExt, 
+        fatherNoInt, noExt, noInt, cruce1, cruce2, colonia, CP, municipio, 
+        emergencyPhone, emergencyContact, phone, height, nacionalidad, grade, 
+        persona1, persona2, persona3, parentesco1, parentesco2, parentesco3, 
+        email, password, type, uid: user.uid
+    };
     userRef.set(profile);
     return dispatch(userLogginSuccess(profile));
 }
@@ -62,13 +74,14 @@ export const signInWithEmail = ({email, password}) => (dispatch) => {
  * @param {Email for firebase user} email
  * @param {Password for firebase user} password
  */
-export const signUpUser = ({info, email, password}) => (dispatch) => {
+export const signUpUser = ({type, motherEscolaridad, motherWorkPhone, motherWork, motherPhone, motherEmail, motherMunicipio, motherState, motherCP, motherColonia, motherapellidoP, motherapellidoM, motherName, motherStreet, motherNoExt, motherNoInt, fatherEscolaridad, fatherWorkPhone, fatherWork, fatherPhone, fatherEmail, fatherMunicipio, fatherState, fatherCP,  fatherColonia, fatherapellidoP, fatherapellidoM, fatherName, name, apellidoP, apellidoM, CURP, tipoDeSangre, birthday, weight, street, fatherStreet, fatherNoExt, fatherNoInt, noExt, noInt, cruce1, cruce2, colonia, CP, municipio, emergencyPhone, emergencyContact, phone, height, nacionalidad, grade, persona1, persona2, persona3, parentesco1, parentesco2, parentesco3, email, password}) => (dispatch) => {
     return firebase.auth().createUserWithEmailAndPassword(email,password)
     .then(s => {
         localStorage.setItem("user", JSON.stringify(s));
         toastr.success("Solicitud enviada con exito");
         alert("Accede a tu perfil, sera provisional por el momento, mas adelante cambiara");
-        dispatch(createProfile(s, info ,dispatch));
+        dispatch(createProfile(s, type, motherEscolaridad, motherWorkPhone, motherWork, motherPhone, motherEmail, motherMunicipio, motherState, motherCP, motherColonia, motherapellidoP, motherapellidoM, motherName, motherStreet, motherNoExt, motherNoInt, fatherEscolaridad, fatherWorkPhone, fatherWork, fatherPhone, fatherEmail, fatherMunicipio, fatherState, fatherCP,  fatherColonia, fatherapellidoP, fatherapellidoM, fatherName, name, apellidoP, apellidoM, CURP, tipoDeSangre, birthday, weight, street, fatherStreet, fatherNoExt, fatherNoInt, noExt, noInt, cruce1, cruce2, colonia, CP, municipio, emergencyPhone, emergencyContact, phone, height, nacionalidad, grade, persona1, persona2, persona3, parentesco1, parentesco2, parentesco3, email, password ,dispatch));
+        return Promise.resolve(s);
     })
     .catch(e => {
         console.log(e);
