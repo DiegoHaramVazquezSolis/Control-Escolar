@@ -15,6 +15,7 @@ import PerfilPublico from './modules/Perfil/PerfilPublico';
 import StudentList from './modules/Student/StudentList';
 import StudentPayments from './modules/Student/StudentPayments';
 import Evaluation from './modules/Evaluation/Evaluation';
+import RegistroAspirante from './modules/Aspirantes/RegistroAspirante';
 
 export class Branches extends Component {
     render(){
@@ -35,6 +36,7 @@ export class Branches extends Component {
                 <Route exact path="/estudiantes" component={StudentList} />
                 <Route exact path="/pagos/:uid" component={StudentPayments} />
                 <Route exact path="/evaluacion" component={Evaluation} />
+                <Route exact path="/inscripcion" component={RegistroAspirante} />
             </Switch>
         );
     }
