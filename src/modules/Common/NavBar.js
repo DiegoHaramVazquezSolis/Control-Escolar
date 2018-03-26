@@ -74,31 +74,33 @@ class NavBar extends Component{
                             </li>
                             <li><NavLink to="/conocenos">Conocenos</NavLink></li>
                             <li><NavLink to="/contacto">Contactanos</NavLink></li>
-                            <li><NavLink to="/fundador">Fundador</NavLink></li>
-                            <li><NavLink to="/preregistro">Inscripciones</NavLink></li>
+                            <li><NavLink to="/inscripcion">Inscripciones</NavLink></li>
                             <li><NavLink to="/login">Iniciar Sesion</NavLink></li>
                         </ul>
                         }
                         {this.state.profile && this.state.profile.type==="student" &&
                         <ul>
                             <li><NavLink to="/perfil">Perfil</NavLink></li>
-                            <li><NavLink to="/materias" >Tira de materias</NavLink></li>
-                            <li><NavLink to="/horario" >Horario</NavLink></li>
-                            <li><NavLink to="/calificaciones"  >Calificaciones</NavLink></li>
-                            <li><NavLink to="/analisis">Analisis de desempeño academico</NavLink></li>
-                            <li><NavLink to="contacto">Contactanos</NavLink></li>
+                            <li><NavLink to={"/materias/"+this.state.profile.grade} >Tira de materias</NavLink></li>
+                            <li><NavLink to={"/horario/"+this.state.profile.grade+"/"+this.state.profile.grupo} >Horario</NavLink></li>
+                            <li><NavLink to={"/calificaciones/"+this.state.profile.uid+"/"+this.props.course}  >Calificaciones</NavLink></li>
+                            <li onClick={this.logOut}><Link to="/">Cerrar Sesion</Link></li>
+                        </ul>
+                        }
+                        {this.state.profile && this.state.profile.type==="aspirant" &&
+                        <ul>
+                            <li><NavLink to="/perfil">Perfil</NavLink></li>
+                            <li><NavLink to={"/materias/"+this.state.profile.grade} >Tira de materias</NavLink></li>
                             <li onClick={this.logOut}><Link to="/">Cerrar Sesion</Link></li>
                         </ul>
                         }
                         {this.state.profile && this.state.profile.type==="teacher" &&
                         <ul>
                             <li><NavLink to="/perfil">Perfil</NavLink></li>
-                            <li><NavLink to="/horario" >Horario</NavLink></li>
+                            <li><NavLink to={"/materias/"+this.state.profile.grade} >Tira de materias</NavLink></li>
+                            <li><NavLink to={"/horario/"+this.state.profile.grade+"/"+this.state.profile.grupo} >Horario</NavLink></li>
                             {this.props.evaluationState &&
-                                <li><NavLink to="/calificar">Calificar</NavLink></li>
-                            }
-                            {this.props.bimester>0 &&
-                                <li><NavLink to="/asistencia" >Asistencia</NavLink></li>
+                                <li><NavLink to={"/calificar/"+this.state.profile.grade+"/"+this.state.profile.grupo}>Calificar</NavLink></li>
                             }
                             <li onClick={this.logOut}><Link to="/">Cerrar Sesion</Link></li>
                         </ul>
@@ -106,17 +108,11 @@ class NavBar extends Component{
                         {this.state.profile && this.state.profile.type==="admin" &&
                         <ul>
                             <li><NavLink to="/aspirantes">Lista de aspirantes</NavLink></li>
-                            <li><NavLink to="/listadematerias" >Listas de materias</NavLink></li>
-                            <li><NavLink to="/listademaestros" >Listas de profesores</NavLink></li>
-                            <li><NavLink to="/listadeestudiantes" >Listas de estudiantes</NavLink></li>
+                            <li><NavLink to="/materias" >Listas de materias</NavLink></li>
+                            <li><NavLink to="/profesores" >Listas de profesores</NavLink></li>
+                            <li><NavLink to="/estudiantes" >Listas de estudiantes</NavLink></li>
                             <li><NavLink to="/evaluacion" >Evaluacion</NavLink></li>
                             <li><NavLink to="/publicar">Hacer publicacion</NavLink></li>
-                            <li onClick={this.logOut}><Link to="/">Cerrar Sesion</Link></li>
-                        </ul>
-                        }
-                        {this.state.profile && this.state.profile.type==="aspirant" &&
-                        <ul>
-                            <li><NavLink to="/perfil">Perfil</NavLink></li>
                             <li onClick={this.logOut}><Link to="/">Cerrar Sesion</Link></li>
                         </ul>
                         }
@@ -170,7 +166,8 @@ function mapStateToProps(state,ownProps) {
         state: state,
         usuario: state.user.profile,
         evaluationState: state.evaluationState.evaluation,
-        bimester: state.bimester.bimester
+        bimester: state.bimester.bimester,
+        course: state.course.course
     };
 }
 
